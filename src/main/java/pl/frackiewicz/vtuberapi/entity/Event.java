@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -23,9 +25,16 @@ public class Event {
     )
     @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
+
     @ManyToMany(mappedBy = "events")
     private Set<VTuber> members = new HashSet<>();
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDateTime eventDateTime;
+
+    @Size(min = 3, max = 64)
     private String type;
+
+    @Size(max = 5000)
     private String description;
 }

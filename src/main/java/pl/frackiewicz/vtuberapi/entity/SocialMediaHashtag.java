@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,8 +16,13 @@ import javax.persistence.ManyToOne;
 @Entity
 public class SocialMediaHashtag {
     @Id
+    @Size(min = 3, max = 24)
+    @NotBlank
     private String hashtag;
+
+    @Size(max = 24)
     private String type;
+
     @ManyToOne
     private VTuber userOfHashtag;
 }
