@@ -1,16 +1,6 @@
 package pl.frackiewicz.vtuberapi.util;
 
-public class ApiUtil {
-    private static ApiUtil INSTANCE = null;
-
-    private ApiUtil() {}
-
-    public static ApiUtil getInstance() {
-        if(INSTANCE == null) {
-            INSTANCE = new ApiUtil();
-        }
-        return INSTANCE;
-    }
+public abstract class ApiUtil {
 
     public static String getApiKey() {
         String apiKey;

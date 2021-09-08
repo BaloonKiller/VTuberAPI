@@ -1,11 +1,32 @@
 package pl.frackiewicz.vtuberapi.entity;
 
-import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
+import java.util.*;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity
+@Table(name = "branches")
 public class Branch {
-    private UUID uid;
+    @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(name = "id", updatable = false, nullable = false)
+    private UUID id;
     private String name;
+    @ManyToOne
     private Organisation organisation;
-    private Generation[] generations;
-    private VTuber[] vTubers;
+    @OneToMany(mappedBy = "branch")
+    private Set<Generation> generations = new HashSet<>();
+    @OneToMany(mappedBy = "branch")
+    private Set<VTuber> vTubers = new HashSet<>();
 }
