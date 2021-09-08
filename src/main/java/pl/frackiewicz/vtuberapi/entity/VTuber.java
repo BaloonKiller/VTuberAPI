@@ -18,7 +18,7 @@ import java.util.*;
 @Table(
         name="vtubers",
         uniqueConstraints =
-        @UniqueConstraint(columnNames = {"firstName", "lastName"})
+        @UniqueConstraint(columnNames = {"firstname", "lastname"})
 )
 public class VTuber {
     @Id
