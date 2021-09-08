@@ -17,7 +17,7 @@ import java.util.*;
 @Table(
         name = "generations",
         uniqueConstraints =
-@UniqueConstraint(columnNames = {"name", "organisation", "branch"}))
+        @UniqueConstraint(columnNames = {"name", "organisation_id", "branch_id"}))
 public class Generation {
     @Id
     @GeneratedValue(generator = "UUID")

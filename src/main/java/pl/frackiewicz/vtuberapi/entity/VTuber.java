@@ -53,7 +53,7 @@ public class VTuber {
     @Size(max = 5000)
     private String description;
 
-    @ManyToMany(mappedBy = "usersOfNickname")
+    @ManyToMany
     private Set<Nickname> nicknames = new HashSet<>();
 
     @ManyToOne
@@ -68,13 +68,13 @@ public class VTuber {
     @OneToOne
     private Channel channel;
 
-    @ManyToMany(mappedBy = "members")
+    @ManyToMany
     private Set<Event> events = new HashSet<>();
 
     @OneToMany(mappedBy = "author")
     private Set<Video> createdVideos = new HashSet<>();
 
-    @ManyToMany(mappedBy = "members")
+    @ManyToMany
     private Set<Video> memberOfVideos = new HashSet<>();
 
     @Column(unique = true)
@@ -88,6 +88,5 @@ public class VTuber {
     @OneToMany(mappedBy = "userOfHashtag")
     private Set<SocialMediaHashtag> socialMediaHashtags = new HashSet<>();
 
-    @Column(columnDefinition = "default true")
     private boolean active;
 }

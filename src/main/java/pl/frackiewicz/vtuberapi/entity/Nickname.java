@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
@@ -16,6 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Data
 @Entity
+@Table(name = "nicknames")
 public class Nickname {
     @Id
     @Size(min = 3, max = 64)
