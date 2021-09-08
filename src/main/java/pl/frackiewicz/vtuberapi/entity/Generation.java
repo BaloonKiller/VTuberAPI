@@ -6,13 +6,18 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "generations")
+@Table(
+        name = "generations",
+        uniqueConstraints =
+@UniqueConstraint(columnNames = {"name", "organisation", "branch"}))
 public class Generation {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -22,11 +27,17 @@ public class Generation {
     )
     @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
+
+    @Size(min = 2, max = 64)
+    @NotBlank
     private String name;
+
     @ManyToOne
     private Organisation organisation;
+
     @ManyToOne
     private Branch branch;
+
     @OneToMany(mappedBy = "generation")
     private Set<VTuber> vTubers = new HashSet<>();
 }
