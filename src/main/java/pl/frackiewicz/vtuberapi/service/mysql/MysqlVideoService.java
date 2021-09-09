@@ -7,6 +7,8 @@ import pl.frackiewicz.vtuberapi.repository.VideoRepository;
 import pl.frackiewicz.vtuberapi.service.VideoService;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class MysqlVideoService implements VideoService {
@@ -20,5 +22,10 @@ public class MysqlVideoService implements VideoService {
     @Override
     public List<Video> getAll() {
         return videoRepository.findAll();
+    }
+
+    @Override
+    public Optional<Video> get(UUID id) {
+        return videoRepository.findById(id);
     }
 }

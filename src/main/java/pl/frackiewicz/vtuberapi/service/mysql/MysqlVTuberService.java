@@ -7,6 +7,8 @@ import pl.frackiewicz.vtuberapi.repository.VTuberRepository;
 import pl.frackiewicz.vtuberapi.service.VTuberService;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class MysqlVTuberService implements VTuberService {
@@ -20,5 +22,10 @@ public class MysqlVTuberService implements VTuberService {
     @Override
     public List<VTuber> getAll() {
         return vTuberRepository.findAll();
+    }
+
+    @Override
+    public Optional<VTuber> get(UUID id) {
+        return vTuberRepository.findById(id);
     }
 }

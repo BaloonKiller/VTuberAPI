@@ -7,6 +7,7 @@ import pl.frackiewicz.vtuberapi.repository.NicknameRepository;
 import pl.frackiewicz.vtuberapi.service.NicknameService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class MysqlNicknameService implements NicknameService {
@@ -20,5 +21,10 @@ public class MysqlNicknameService implements NicknameService {
     @Override
     public List<Nickname> getAll() {
         return nicknameRepository.findAll();
+    }
+
+    @Override
+    public Optional<Nickname> get(String nickname) {
+        return nicknameRepository.findById(nickname);
     }
 }

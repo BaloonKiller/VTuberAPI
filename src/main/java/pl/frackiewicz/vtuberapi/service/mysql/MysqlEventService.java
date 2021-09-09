@@ -7,6 +7,8 @@ import pl.frackiewicz.vtuberapi.repository.EventRepository;
 import pl.frackiewicz.vtuberapi.service.EventService;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class MysqlEventService implements EventService {
@@ -20,5 +22,10 @@ public class MysqlEventService implements EventService {
     @Override
     public List<Event> getAll() {
         return eventRepository.findAll();
+    }
+
+    @Override
+    public Optional<Event> get(UUID id) {
+        return eventRepository.findById(id);
     }
 }

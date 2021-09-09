@@ -7,6 +7,8 @@ import pl.frackiewicz.vtuberapi.repository.ChannelRepository;
 import pl.frackiewicz.vtuberapi.service.ChannelService;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class MysqlChannelService implements ChannelService {
@@ -20,5 +22,10 @@ public class MysqlChannelService implements ChannelService {
     @Override
     public List<Channel> getAll() {
         return channelRepository.findAll();
+    }
+
+    @Override
+    public Optional<Channel> get(UUID id) {
+        return channelRepository.findById(id);
     }
 }

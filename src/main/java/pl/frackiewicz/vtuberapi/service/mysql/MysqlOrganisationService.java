@@ -7,6 +7,8 @@ import pl.frackiewicz.vtuberapi.repository.OrganisationRepository;
 import pl.frackiewicz.vtuberapi.service.OrganisationService;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class MysqlOrganisationService implements OrganisationService {
@@ -20,5 +22,10 @@ public class MysqlOrganisationService implements OrganisationService {
     @Override
     public List<Organisation> getAll() {
         return organisationRepository.findAll();
+    }
+
+    @Override
+    public Optional<Organisation> get(UUID id) {
+        return organisationRepository.findById(id);
     }
 }

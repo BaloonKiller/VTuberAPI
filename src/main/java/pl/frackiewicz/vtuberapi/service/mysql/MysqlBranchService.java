@@ -7,6 +7,8 @@ import pl.frackiewicz.vtuberapi.repository.BranchRepository;
 import pl.frackiewicz.vtuberapi.service.BranchService;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class MysqlBranchService implements BranchService {
@@ -20,5 +22,10 @@ public class MysqlBranchService implements BranchService {
     @Override
     public List<Branch> getAll() {
         return branchRepository.findAll();
+    }
+
+    @Override
+    public Optional<Branch> get(UUID id) {
+        return branchRepository.findById(id);
     }
 }

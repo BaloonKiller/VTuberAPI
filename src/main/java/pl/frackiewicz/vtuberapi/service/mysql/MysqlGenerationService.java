@@ -7,6 +7,8 @@ import pl.frackiewicz.vtuberapi.repository.GenerationRepository;
 import pl.frackiewicz.vtuberapi.service.GenerationService;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class MysqlGenerationService implements GenerationService {
@@ -20,5 +22,10 @@ public class MysqlGenerationService implements GenerationService {
     @Override
     public List<Generation> getAll() {
         return generationRepository.findAll();
+    }
+
+    @Override
+    public Optional<Generation> get(UUID id) {
+        return generationRepository.findById(id);
     }
 }

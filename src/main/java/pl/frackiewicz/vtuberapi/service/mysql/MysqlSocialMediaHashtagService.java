@@ -7,6 +7,7 @@ import pl.frackiewicz.vtuberapi.repository.SocialMediaHashtagRepository;
 import pl.frackiewicz.vtuberapi.service.SocialMediaHashtagService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class MysqlSocialMediaHashtagService implements SocialMediaHashtagService {
@@ -20,5 +21,10 @@ public class MysqlSocialMediaHashtagService implements SocialMediaHashtagService
     @Override
     public List<SocialMediaHashtag> getAll() {
         return socialMediaHashtagRepository.findAll();
+    }
+
+    @Override
+    public Optional<SocialMediaHashtag> get(String socialMediaHashtag) {
+        return socialMediaHashtagRepository.findById(socialMediaHashtag);
     }
 }
