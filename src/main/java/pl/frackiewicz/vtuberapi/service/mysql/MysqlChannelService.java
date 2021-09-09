@@ -28,4 +28,9 @@ public class MysqlChannelService implements ChannelService {
     public Optional<Channel> get(UUID id) {
         return channelRepository.findById(id);
     }
+
+    @Override
+    public void save(Channel channel) {
+        channelRepository.save(channel);
+    }
 }

@@ -28,4 +28,9 @@ public class MysqlVTuberService implements VTuberService {
     public Optional<VTuber> get(UUID id) {
         return vTuberRepository.findById(id);
     }
+
+    @Override
+    public void save(VTuber vTuber) {
+        vTuberRepository.save(vTuber);
+    }
 }

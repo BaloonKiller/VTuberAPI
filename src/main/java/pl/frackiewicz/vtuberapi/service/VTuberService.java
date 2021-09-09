@@ -10,4 +10,6 @@ public interface VTuberService {
     List<VTuber> getAll();
 
     Optional<VTuber> get(UUID id);
+
+    void save(VTuber vTuber);
 }

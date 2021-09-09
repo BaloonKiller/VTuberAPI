@@ -28,4 +28,9 @@ public class MysqlOrganisationService implements OrganisationService {
     public Optional<Organisation> get(UUID id) {
         return organisationRepository.findById(id);
     }
+
+    @Override
+    public void save(Organisation organisation) {
+        organisationRepository.save(organisation);
+    }
 }

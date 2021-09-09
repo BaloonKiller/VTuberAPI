@@ -11,4 +11,6 @@ public interface GenerationService {
     List<Generation> getAll();
 
     Optional<Generation> get(UUID id);
+
+    void save(Generation generation);
 }

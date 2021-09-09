@@ -28,4 +28,9 @@ public class MysqlVideoService implements VideoService {
     public Optional<Video> get(UUID id) {
         return videoRepository.findById(id);
     }
+
+    @Override
+    public void save(Video video) {
+        videoRepository.save(video);
+    }
 }

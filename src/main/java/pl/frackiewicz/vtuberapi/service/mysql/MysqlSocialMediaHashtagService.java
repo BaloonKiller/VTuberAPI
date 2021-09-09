@@ -27,4 +27,9 @@ public class MysqlSocialMediaHashtagService implements SocialMediaHashtagService
     public Optional<SocialMediaHashtag> get(String socialMediaHashtag) {
         return socialMediaHashtagRepository.findById(socialMediaHashtag);
     }
+
+    @Override
+    public void save(SocialMediaHashtag socialMediaHashtag) {
+        socialMediaHashtagRepository.save(socialMediaHashtag);
+    }
 }

@@ -10,4 +10,6 @@ public interface OrganisationService {
     List<Organisation> getAll();
 
     Optional<Organisation> get(UUID id);
+
+    void save(Organisation organisation);
 }

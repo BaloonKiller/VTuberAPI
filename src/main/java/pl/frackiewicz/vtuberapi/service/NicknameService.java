@@ -10,4 +10,6 @@ public interface NicknameService {
     List<Nickname> getAll();
 
     Optional<Nickname> get(String nickname);
+
+    void save(Nickname nickname);
 }

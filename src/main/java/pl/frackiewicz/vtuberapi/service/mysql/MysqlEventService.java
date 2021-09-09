@@ -28,4 +28,9 @@ public class MysqlEventService implements EventService {
     public Optional<Event> get(UUID id) {
         return eventRepository.findById(id);
     }
+
+    @Override
+    public void save(Event event) {
+        eventRepository.save(event);
+    }
 }

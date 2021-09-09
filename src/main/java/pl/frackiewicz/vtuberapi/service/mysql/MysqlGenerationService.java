@@ -28,4 +28,9 @@ public class MysqlGenerationService implements GenerationService {
     public Optional<Generation> get(UUID id) {
         return generationRepository.findById(id);
     }
+
+    @Override
+    public void save(Generation generation) {
+        generationRepository.save(generation);
+    }
 }

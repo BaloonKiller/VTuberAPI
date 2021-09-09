@@ -11,4 +11,6 @@ public interface EventService {
     List<Event> getAll();
 
     Optional<Event> get(UUID id);
+
+    void save(Event event);
 }

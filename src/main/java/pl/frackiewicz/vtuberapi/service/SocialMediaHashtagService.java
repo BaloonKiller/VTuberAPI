@@ -9,4 +9,6 @@ public interface SocialMediaHashtagService {
     List<SocialMediaHashtag> getAll();
 
     Optional<SocialMediaHashtag> get(String socialMediaHashtag);
+
+    void save(SocialMediaHashtag socialMediaHashtag);
 }

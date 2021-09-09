@@ -11,4 +11,6 @@ public interface ChannelService {
     List<Channel> getAll();
 
     Optional<Channel> get(UUID id);
+
+    void save(Channel channel);
 }

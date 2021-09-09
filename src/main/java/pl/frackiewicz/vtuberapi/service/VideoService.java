@@ -10,4 +10,6 @@ public interface VideoService {
     List<Video> getAll();
 
     Optional<Video> get(UUID id);
+
+    void save(Video video);
 }

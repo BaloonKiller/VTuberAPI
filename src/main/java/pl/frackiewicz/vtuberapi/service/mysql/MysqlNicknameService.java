@@ -27,4 +27,9 @@ public class MysqlNicknameService implements NicknameService {
     public Optional<Nickname> get(String nickname) {
         return nicknameRepository.findById(nickname);
     }
+
+    @Override
+    public void save(Nickname nickname) {
+        nicknameRepository.save(nickname);
+    }
 }

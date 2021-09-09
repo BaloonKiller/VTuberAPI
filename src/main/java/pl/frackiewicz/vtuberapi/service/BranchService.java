@@ -8,5 +8,8 @@ import java.util.UUID;
 
 public interface BranchService {
     List<Branch> getAll();
+
     Optional<Branch> get(UUID uuid);
+
+    void save(Branch branch);
 }
