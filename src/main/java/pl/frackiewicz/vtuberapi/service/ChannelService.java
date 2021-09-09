@@ -13,4 +13,6 @@ public interface ChannelService {
     Optional<Channel> get(UUID id);
 
     void save(Channel channel);
+
+    void delete(Channel channel);
 }

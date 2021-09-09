@@ -33,4 +33,9 @@ public class MysqlGenerationService implements GenerationService {
     public void save(Generation generation) {
         generationRepository.save(generation);
     }
+
+    @Override
+    public void delete(Generation generation) {
+        generationRepository.delete(generation);
+    }
 }

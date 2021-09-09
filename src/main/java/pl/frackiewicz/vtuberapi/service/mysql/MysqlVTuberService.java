@@ -33,4 +33,9 @@ public class MysqlVTuberService implements VTuberService {
     public void save(VTuber vTuber) {
         vTuberRepository.save(vTuber);
     }
+
+    @Override
+    public void delete(VTuber vTuber) {
+        vTuberRepository.delete(vTuber);
+    }
 }

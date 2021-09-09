@@ -12,4 +12,6 @@ public interface VTuberService {
     Optional<VTuber> get(UUID id);
 
     void save(VTuber vTuber);
+
+    void delete(VTuber vTuber);
 }

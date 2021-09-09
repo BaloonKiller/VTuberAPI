@@ -33,4 +33,9 @@ public class MysqlVideoService implements VideoService {
     public void save(Video video) {
         videoRepository.save(video);
     }
+
+    @Override
+    public void delete(Video video) {
+        videoRepository.delete(video);
+    }
 }

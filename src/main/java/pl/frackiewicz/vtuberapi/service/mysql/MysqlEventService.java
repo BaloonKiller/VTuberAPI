@@ -33,4 +33,9 @@ public class MysqlEventService implements EventService {
     public void save(Event event) {
         eventRepository.save(event);
     }
+
+    @Override
+    public void delete(Event event) {
+        eventRepository.delete(event);
+    }
 }

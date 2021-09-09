@@ -12,4 +12,6 @@ public interface BranchService {
     Optional<Branch> get(UUID uuid);
 
     void save(Branch branch);
+
+    void delete(Branch branch);
 }

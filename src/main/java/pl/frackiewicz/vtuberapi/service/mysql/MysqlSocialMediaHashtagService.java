@@ -32,4 +32,9 @@ public class MysqlSocialMediaHashtagService implements SocialMediaHashtagService
     public void save(SocialMediaHashtag socialMediaHashtag) {
         socialMediaHashtagRepository.save(socialMediaHashtag);
     }
+
+    @Override
+    public void delete(SocialMediaHashtag socialMediaHashtag) {
+        socialMediaHashtagRepository.delete(socialMediaHashtag);
+    }
 }

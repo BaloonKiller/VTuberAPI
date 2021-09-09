@@ -34,4 +34,9 @@ public class MysqlBranchService implements BranchService {
     public void save(Branch branch) {
         branchRepository.save(branch);
     }
+
+    @Override
+    public void delete(Branch branch) {
+        branchRepository.delete(branch);
+    }
 }

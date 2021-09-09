@@ -32,4 +32,9 @@ public class MysqlNicknameService implements NicknameService {
     public void save(Nickname nickname) {
         nicknameRepository.save(nickname);
     }
+
+    @Override
+    public void delete(Nickname nickname) {
+        nicknameRepository.delete(nickname);
+    }
 }

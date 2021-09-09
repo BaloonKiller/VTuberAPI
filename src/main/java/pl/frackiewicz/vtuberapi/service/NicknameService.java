@@ -12,4 +12,6 @@ public interface NicknameService {
     Optional<Nickname> get(String nickname);
 
     void save(Nickname nickname);
+
+    void delete(Nickname nickname);
 }

@@ -33,4 +33,9 @@ public class MysqlOrganisationService implements OrganisationService {
     public void save(Organisation organisation) {
         organisationRepository.save(organisation);
     }
+
+    @Override
+    public void delete(Organisation organisation) {
+        organisationRepository.delete(organisation);
+    }
 }

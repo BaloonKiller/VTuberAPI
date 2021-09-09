@@ -13,4 +13,6 @@ public interface GenerationService {
     Optional<Generation> get(UUID id);
 
     void save(Generation generation);
+
+    void delete(Generation generation);
 }

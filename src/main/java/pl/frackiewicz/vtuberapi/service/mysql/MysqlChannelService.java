@@ -33,4 +33,9 @@ public class MysqlChannelService implements ChannelService {
     public void save(Channel channel) {
         channelRepository.save(channel);
     }
+
+    @Override
+    public void delete(Channel channel) {
+        channelRepository.delete(channel);
+    }
 }

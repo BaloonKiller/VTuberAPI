@@ -12,4 +12,6 @@ public interface VideoService {
     Optional<Video> get(UUID id);
 
     void save(Video video);
+
+    void delete(Video video);
 }

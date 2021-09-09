@@ -11,4 +11,6 @@ public interface SocialMediaHashtagService {
     Optional<SocialMediaHashtag> get(String socialMediaHashtag);
 
     void save(SocialMediaHashtag socialMediaHashtag);
+
+    void delete(SocialMediaHashtag socialMediaHashtag);
 }

@@ -13,4 +13,6 @@ public interface EventService {
     Optional<Event> get(UUID id);
 
     void save(Event event);
+
+    void delete(Event event);
 }
