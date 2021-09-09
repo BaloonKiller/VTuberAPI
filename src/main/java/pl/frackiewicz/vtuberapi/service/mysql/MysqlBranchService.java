@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import pl.frackiewicz.vtuberapi.entity.Branch;
 import pl.frackiewicz.vtuberapi.repository.BranchRepository;
 import pl.frackiewicz.vtuberapi.service.BranchService;
-import javax.validation.Validator;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -16,7 +15,7 @@ public class MysqlBranchService implements BranchService {
     private BranchRepository branchRepository;
 
     @Autowired
-    public MysqlBranchService(BranchRepository branchRepository, Validator validator) {
+    public MysqlBranchService(BranchRepository branchRepository) {
         this.branchRepository = branchRepository;
     }
 
