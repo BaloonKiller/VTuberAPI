@@ -1,9 +1,11 @@
 package pl.frackiewicz.vtuberapi.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import pl.frackiewicz.vtuberapi.util.VTuberSerializer;
 
 import javax.persistence.*;
 import javax.validation.constraints.PositiveOrZero;
@@ -27,9 +29,11 @@ public class Video {
     private UUID id;
 
     @ManyToOne
+    @JsonSerialize(using = VTuberSerializer.class)
     private VTuber author;
 
     @ManyToMany(mappedBy = "memberOfVideos")
+    @JsonSerialize(using = VTuberSerializer.class)
     private Set<VTuber> members = new HashSet<>();
 
     @PositiveOrZero

@@ -1,8 +1,10 @@
 package pl.frackiewicz.vtuberapi.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.frackiewicz.vtuberapi.util.VTuberSerializer;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -26,5 +28,6 @@ public class SocialMediaHashtag {
     private String type;
 
     @ManyToOne
+    @JsonSerialize(using = VTuberSerializer.class)
     private VTuber userOfHashtag;
 }

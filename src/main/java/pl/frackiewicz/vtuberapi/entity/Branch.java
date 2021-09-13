@@ -36,8 +36,10 @@ public class Branch {
     private Organisation organisation;
 
     @OneToMany(mappedBy = "branch")
+    @JsonSerialize(using = GenerationSerializer.class)
     private Set<Generation> generations = new HashSet<>();
     
     @OneToMany(mappedBy = "branch")
+    @JsonSerialize(using = VTuberSerializer.class)
     private Set<VTuber> vTubers = new HashSet<>();
 }

@@ -1,8 +1,10 @@
 package pl.frackiewicz.vtuberapi.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.frackiewicz.vtuberapi.util.VTuberSerializer;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,5 +27,6 @@ public class Nickname {
     private String nickname;
 
     @ManyToMany(mappedBy = "nicknames")
+    @JsonSerialize(using = VTuberSerializer.class)
     private Set<VTuber> usersOfNickname = new HashSet<>();
 }

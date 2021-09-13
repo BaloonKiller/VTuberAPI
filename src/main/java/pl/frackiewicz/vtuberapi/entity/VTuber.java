@@ -1,10 +1,12 @@
 package pl.frackiewicz.vtuberapi.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.frackiewicz.vtuberapi.util.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -54,27 +56,35 @@ public class VTuber {
     private String description;
 
     @ManyToMany
+    @JsonSerialize(using = NicknameSerializer.class)
     private Set<Nickname> nicknames = new HashSet<>();
 
     @ManyToOne
+    @JsonSerialize(using = OrganisationSerializer.class)
     private Organisation organisation;
 
     @ManyToOne
+    @JsonSerialize(using = BranchSerializer.class)
     private Branch branch;
 
     @ManyToOne
+    @JsonSerialize(using = GenerationSerializer.class)
     private Generation generation;
 
     @OneToOne
+    @JsonSerialize(using = ChannelSerializer.class)
     private Channel channel;
 
     @ManyToMany
+    @JsonSerialize(using = EventSerializer.class)
     private Set<Event> events = new HashSet<>();
 
     @OneToMany(mappedBy = "author")
+    @JsonSerialize(using = VideoSerializer.class)
     private Set<Video> createdVideos = new HashSet<>();
 
     @ManyToMany
+    @JsonSerialize(using = VideoSerializer.class)
     private Set<Video> memberOfVideos = new HashSet<>();
 
     @Column(unique = true)
@@ -86,6 +96,7 @@ public class VTuber {
     private LocalDate debutDate;
 
     @OneToMany(mappedBy = "userOfHashtag")
+    @JsonSerialize(using = SocialMediaHashtagSerializer.class)
     private Set<SocialMediaHashtag> socialMediaHashtags = new HashSet<>();
 
     private boolean active;
