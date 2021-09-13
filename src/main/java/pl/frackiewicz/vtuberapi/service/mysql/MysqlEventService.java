@@ -6,6 +6,7 @@ import pl.frackiewicz.vtuberapi.entity.Event;
 import pl.frackiewicz.vtuberapi.repository.EventRepository;
 import pl.frackiewicz.vtuberapi.service.EventService;
 
+import javax.validation.Validator;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -13,10 +14,12 @@ import java.util.UUID;
 @Component
 public class MysqlEventService implements EventService {
     private EventRepository eventRepository;
+    private Validator validator;
 
     @Autowired
-    public MysqlEventService(EventRepository eventRepository) {
+    public MysqlEventService(EventRepository eventRepository, Validator validator) {
         this.eventRepository = eventRepository;
+        this.validator = validator;
     }
 
     @Override

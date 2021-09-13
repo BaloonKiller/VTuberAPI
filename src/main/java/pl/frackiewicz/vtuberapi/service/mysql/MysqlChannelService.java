@@ -6,6 +6,7 @@ import pl.frackiewicz.vtuberapi.entity.Channel;
 import pl.frackiewicz.vtuberapi.repository.ChannelRepository;
 import pl.frackiewicz.vtuberapi.service.ChannelService;
 
+import javax.validation.Validator;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -13,10 +14,12 @@ import java.util.UUID;
 @Component
 public class MysqlChannelService implements ChannelService {
     private ChannelRepository channelRepository;
+    private Validator validator;
 
     @Autowired
-    public MysqlChannelService(ChannelRepository channelRepository) {
+    public MysqlChannelService(ChannelRepository channelRepository, javax.validation.Validator validator) {
         this.channelRepository = channelRepository;
+        this.validator = validator;
     }
 
     @Override

@@ -6,16 +6,19 @@ import pl.frackiewicz.vtuberapi.entity.Nickname;
 import pl.frackiewicz.vtuberapi.repository.NicknameRepository;
 import pl.frackiewicz.vtuberapi.service.NicknameService;
 
+import javax.validation.Validator;
 import java.util.List;
 import java.util.Optional;
 
 @Component
 public class MysqlNicknameService implements NicknameService {
     private NicknameRepository nicknameRepository;
+    private Validator validator;
 
     @Autowired
-    public MysqlNicknameService(NicknameRepository nicknameRepository) {
+    public MysqlNicknameService(NicknameRepository nicknameRepository, Validator validator) {
         this.nicknameRepository = nicknameRepository;
+        this.validator = validator;
     }
 
     @Override

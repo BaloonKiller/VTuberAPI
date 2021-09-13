@@ -6,6 +6,7 @@ import pl.frackiewicz.vtuberapi.entity.Organisation;
 import pl.frackiewicz.vtuberapi.repository.OrganisationRepository;
 import pl.frackiewicz.vtuberapi.service.OrganisationService;
 
+import javax.validation.Validator;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -13,10 +14,12 @@ import java.util.UUID;
 @Component
 public class MysqlOrganisationService implements OrganisationService {
     private OrganisationRepository organisationRepository;
+    private Validator validator;
 
     @Autowired
-    public MysqlOrganisationService(OrganisationRepository organisationRepository) {
+    public MysqlOrganisationService(OrganisationRepository organisationRepository, Validator validator) {
         this.organisationRepository = organisationRepository;
+        this.validator = validator;
     }
 
     @Override

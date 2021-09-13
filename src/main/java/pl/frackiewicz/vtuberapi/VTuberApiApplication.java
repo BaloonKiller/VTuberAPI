@@ -13,4 +13,9 @@ public class VTuberApiApplication {
     public static void main(String[] args) {
         SpringApplication.run(VTuberApiApplication.class, args);
     }
+
+    @Bean
+    public Validator validator() {
+        return new LocalValidatorFactoryBean();
+    }
 }

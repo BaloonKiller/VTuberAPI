@@ -6,6 +6,7 @@ import pl.frackiewicz.vtuberapi.entity.Generation;
 import pl.frackiewicz.vtuberapi.repository.GenerationRepository;
 import pl.frackiewicz.vtuberapi.service.GenerationService;
 
+import javax.validation.Validator;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -13,10 +14,12 @@ import java.util.UUID;
 @Component
 public class MysqlGenerationService implements GenerationService {
     private GenerationRepository generationRepository;
+    private Validator validator;
 
     @Autowired
-    public MysqlGenerationService(GenerationRepository generationRepository) {
+    public MysqlGenerationService(GenerationRepository generationRepository, Validator validator) {
         this.generationRepository = generationRepository;
+        this.validator = validator;
     }
 
     @Override

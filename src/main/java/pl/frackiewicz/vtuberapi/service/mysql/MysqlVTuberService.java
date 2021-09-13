@@ -6,6 +6,7 @@ import pl.frackiewicz.vtuberapi.entity.VTuber;
 import pl.frackiewicz.vtuberapi.repository.VTuberRepository;
 import pl.frackiewicz.vtuberapi.service.VTuberService;
 
+import javax.validation.Validator;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -13,10 +14,12 @@ import java.util.UUID;
 @Component
 public class MysqlVTuberService implements VTuberService {
     private VTuberRepository vTuberRepository;
+    private Validator validator;
 
     @Autowired
-    public MysqlVTuberService(VTuberRepository vTuberRepository) {
+    public MysqlVTuberService(VTuberRepository vTuberRepository, Validator validator) {
         this.vTuberRepository = vTuberRepository;
+        this.validator = validator;
     }
 
     @Override
