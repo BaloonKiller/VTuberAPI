@@ -1,20 +1,26 @@
 package pl.frackiewicz.vtuberapi.service.mysql;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import pl.frackiewicz.vtuberapi.entity.Branch;
 import pl.frackiewicz.vtuberapi.entity.Video;
 import pl.frackiewicz.vtuberapi.repository.VideoRepository;
 import pl.frackiewicz.vtuberapi.service.VideoService;
 
+import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 @Component
 public class MysqlVideoService implements VideoService {
     private VideoRepository videoRepository;
     private Validator validator;
+    private static final Logger logger = LogManager.getLogger(MysqlVideoService.class);
 
     @Autowired
     public MysqlVideoService(VideoRepository videoRepository, Validator validator) {
@@ -34,7 +40,14 @@ public class MysqlVideoService implements VideoService {
 
     @Override
     public void save(Video video) {
-        videoRepository.save(video);
+        Set<ConstraintViolation<Video>> violations = validator.validate(video);
+        if (!violations.isEmpty()) {
+            for (ConstraintViolation<Video> constraintViolation : violations) {
+                logger.debug(constraintViolation.getPropertyPath() + " "
+                        + constraintViolation.getMessage()); }
+        } else {
+            videoRepository.save(video);
+        }
     }
 
     @Override
