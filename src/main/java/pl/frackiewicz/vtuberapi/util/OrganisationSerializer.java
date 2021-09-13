@@ -4,7 +4,11 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import pl.frackiewicz.vtuberapi.entity.Branch;
+import pl.frackiewicz.vtuberapi.entity.Generation;
 import pl.frackiewicz.vtuberapi.entity.Organisation;
+import pl.frackiewicz.vtuberapi.entity.VTuber;
+
 import java.io.IOException;
 
 public class OrganisationSerializer extends JsonSerializer<Organisation> {
@@ -13,7 +17,6 @@ public class OrganisationSerializer extends JsonSerializer<Organisation> {
             jsonGenerator.writeStartObject();
             jsonGenerator.writeStringField("id", organisation.getId().toString());
             jsonGenerator.writeStringField("name", organisation.getName());
-            jsonGenerator.writeStringField("createddate", organisation.getCreatedDate().toString());
             jsonGenerator.writeEndObject();
         }
 }
