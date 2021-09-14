@@ -10,10 +10,7 @@ import pl.frackiewicz.vtuberapi.service.BranchService;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 
 @Component
@@ -34,8 +31,8 @@ public class MysqlBranchService implements BranchService {
     }
 
     @Override
-    public Optional<Branch> get(UUID id) {
-        return branchRepository.findById(id);
+    public Branch get(UUID id) throws NoSuchElementException {
+        return branchRepository.findById(id).orElseThrow();
     }
 
     @Override

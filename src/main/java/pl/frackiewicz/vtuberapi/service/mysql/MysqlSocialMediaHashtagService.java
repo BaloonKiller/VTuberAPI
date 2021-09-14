@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.frackiewicz.vtuberapi.entity.Branch;
 import pl.frackiewicz.vtuberapi.entity.SocialMediaHashtag;
 import pl.frackiewicz.vtuberapi.repository.SocialMediaHashtagRepository;
 import pl.frackiewicz.vtuberapi.service.SocialMediaHashtagService;
@@ -12,7 +11,7 @@ import pl.frackiewicz.vtuberapi.service.SocialMediaHashtagService;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 @Component
@@ -28,13 +27,13 @@ public class MysqlSocialMediaHashtagService implements SocialMediaHashtagService
     }
 
     @Override
-    public List<SocialMediaHashtag> getAll() {
+    public List<SocialMediaHashtag> getAll() throws NoSuchElementException {
         return socialMediaHashtagRepository.findAll();
     }
 
     @Override
-    public Optional<SocialMediaHashtag> get(String socialMediaHashtag) {
-        return socialMediaHashtagRepository.findById(socialMediaHashtag);
+    public SocialMediaHashtag get(String socialMediaHashtag) {
+        return socialMediaHashtagRepository.findById(socialMediaHashtag).orElseThrow();
     }
 
     @Override

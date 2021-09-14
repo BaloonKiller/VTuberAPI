@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.frackiewicz.vtuberapi.entity.Branch;
 import pl.frackiewicz.vtuberapi.entity.Channel;
 import pl.frackiewicz.vtuberapi.repository.ChannelRepository;
 import pl.frackiewicz.vtuberapi.service.ChannelService;
@@ -12,7 +11,7 @@ import pl.frackiewicz.vtuberapi.service.ChannelService;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.UUID;
 
@@ -34,8 +33,8 @@ public class MysqlChannelService implements ChannelService {
     }
 
     @Override
-    public Optional<Channel> get(UUID id) {
-        return channelRepository.findById(id);
+    public Channel get(UUID id) throws NoSuchElementException {
+        return channelRepository.findById(id).orElseThrow();
     }
 
     @Override

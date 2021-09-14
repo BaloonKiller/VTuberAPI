@@ -3,16 +3,16 @@ package pl.frackiewicz.vtuberapi.service;
 import pl.frackiewicz.vtuberapi.entity.Event;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 public interface EventService {
 
     List<Event> getAll();
 
-    Optional<Event> get(UUID id);
+    Event get(UUID id) throws NoSuchElementException;
 
     void save(Event event);
 
-    void delete(Event event);
+    void delete(Event event) throws NoSuchElementException;
 }

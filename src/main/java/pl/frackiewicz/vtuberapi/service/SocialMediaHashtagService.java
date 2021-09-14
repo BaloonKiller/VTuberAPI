@@ -3,14 +3,14 @@ package pl.frackiewicz.vtuberapi.service;
 import pl.frackiewicz.vtuberapi.entity.SocialMediaHashtag;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 public interface SocialMediaHashtagService {
     List<SocialMediaHashtag> getAll();
 
-    Optional<SocialMediaHashtag> get(String socialMediaHashtag);
+    SocialMediaHashtag get(String socialMediaHashtag) throws NoSuchElementException;
 
     void save(SocialMediaHashtag socialMediaHashtag);
 
-    void delete(SocialMediaHashtag socialMediaHashtag);
+    void delete(SocialMediaHashtag socialMediaHashtag) throws NoSuchElementException;
 }

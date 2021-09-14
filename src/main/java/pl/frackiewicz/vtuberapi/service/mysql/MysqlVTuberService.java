@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.frackiewicz.vtuberapi.entity.Branch;
 import pl.frackiewicz.vtuberapi.entity.VTuber;
 import pl.frackiewicz.vtuberapi.repository.VTuberRepository;
 import pl.frackiewicz.vtuberapi.service.VTuberService;
@@ -12,7 +11,7 @@ import pl.frackiewicz.vtuberapi.service.VTuberService;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.UUID;
 
@@ -34,8 +33,8 @@ public class MysqlVTuberService implements VTuberService {
     }
 
     @Override
-    public Optional<VTuber> get(UUID id) {
-        return vTuberRepository.findById(id);
+    public VTuber get(UUID id) throws NoSuchElementException {
+        return vTuberRepository.findById(id).orElseThrow();
     }
 
     @Override

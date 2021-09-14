@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.frackiewicz.vtuberapi.entity.Branch;
 import pl.frackiewicz.vtuberapi.entity.Event;
 import pl.frackiewicz.vtuberapi.repository.EventRepository;
 import pl.frackiewicz.vtuberapi.service.EventService;
@@ -12,7 +11,7 @@ import pl.frackiewicz.vtuberapi.service.EventService;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.UUID;
 
@@ -34,8 +33,8 @@ public class MysqlEventService implements EventService {
     }
 
     @Override
-    public Optional<Event> get(UUID id) {
-        return eventRepository.findById(id);
+    public Event get(UUID id) throws NoSuchElementException {
+        return eventRepository.findById(id).orElseThrow();
     }
 
     @Override

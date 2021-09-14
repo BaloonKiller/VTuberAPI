@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.frackiewicz.vtuberapi.entity.Branch;
 import pl.frackiewicz.vtuberapi.entity.Organisation;
 import pl.frackiewicz.vtuberapi.repository.OrganisationRepository;
 import pl.frackiewicz.vtuberapi.service.OrganisationService;
@@ -12,7 +11,7 @@ import pl.frackiewicz.vtuberapi.service.OrganisationService;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.UUID;
 
@@ -34,8 +33,8 @@ public class MysqlOrganisationService implements OrganisationService {
     }
 
     @Override
-    public Optional<Organisation> get(UUID id) {
-        return organisationRepository.findById(id);
+    public Organisation get(UUID id) throws NoSuchElementException {
+        return organisationRepository.findById(id).orElseThrow();
     }
 
     @Override

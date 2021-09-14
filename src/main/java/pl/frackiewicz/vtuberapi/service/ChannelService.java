@@ -3,16 +3,16 @@ package pl.frackiewicz.vtuberapi.service;
 import pl.frackiewicz.vtuberapi.entity.Channel;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 public interface ChannelService {
 
     List<Channel> getAll();
 
-    Optional<Channel> get(UUID id);
+    Channel get(UUID id) throws NoSuchElementException;
 
     void save(Channel channel);
 
-    void delete(Channel channel);
+    void delete(Channel channel) throws NoSuchElementException;
 }
