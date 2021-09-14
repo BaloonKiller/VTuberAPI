@@ -17,8 +17,8 @@ import java.util.UUID;
 
 @Component
 public class MysqlChannelService implements ChannelService {
-    private ChannelRepository channelRepository;
-    private Validator validator;
+    private final ChannelRepository channelRepository;
+    private final Validator validator;
     private static final Logger logger = LogManager.getLogger(MysqlChannelService.class);
 
     @Autowired

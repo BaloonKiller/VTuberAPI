@@ -16,8 +16,8 @@ import java.util.Set;
 
 @Component
 public class MysqlSocialMediaHashtagService implements SocialMediaHashtagService {
-    private SocialMediaHashtagRepository socialMediaHashtagRepository;
-    private Validator validator;
+    private final SocialMediaHashtagRepository socialMediaHashtagRepository;
+    private final Validator validator;
     private static final Logger logger = LogManager.getLogger(MysqlSocialMediaHashtagService.class);
 
     @Autowired

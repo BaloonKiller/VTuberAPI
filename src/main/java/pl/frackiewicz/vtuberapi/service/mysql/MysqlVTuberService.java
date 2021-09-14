@@ -17,8 +17,8 @@ import java.util.UUID;
 
 @Component
 public class MysqlVTuberService implements VTuberService {
-    private VTuberRepository vTuberRepository;
-    private Validator validator;
+    private final VTuberRepository vTuberRepository;
+    private final Validator validator;
     private static final Logger logger = LogManager.getLogger(MysqlVTuberService.class);
 
     @Autowired

@@ -16,8 +16,8 @@ import java.util.Set;
 
 @Component
 public class MysqlNicknameService implements NicknameService {
-    private NicknameRepository nicknameRepository;
-    private Validator validator;
+    private final NicknameRepository nicknameRepository;
+    private final Validator validator;
     private static final Logger logger = LogManager.getLogger(MysqlNicknameService.class);
 
     @Autowired

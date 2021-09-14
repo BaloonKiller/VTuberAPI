@@ -17,8 +17,8 @@ import java.util.UUID;
 
 @Component
 public class MysqlGenerationService implements GenerationService {
-    private GenerationRepository generationRepository;
-    private Validator validator;
+    private final GenerationRepository generationRepository;
+    private final Validator validator;
     private static final Logger logger = LogManager.getLogger(MysqlGenerationService.class);
 
     @Autowired

@@ -17,8 +17,8 @@ import java.util.UUID;
 
 @Component
 public class MysqlVideoService implements VideoService {
-    private VideoRepository videoRepository;
-    private Validator validator;
+    private final VideoRepository videoRepository;
+    private final Validator validator;
     private static final Logger logger = LogManager.getLogger(MysqlVideoService.class);
 
     @Autowired

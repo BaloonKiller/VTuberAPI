@@ -17,8 +17,8 @@ import java.util.UUID;
 
 @Component
 public class MysqlEventService implements EventService {
-    private EventRepository eventRepository;
-    private Validator validator;
+    private final EventRepository eventRepository;
+    private final Validator validator;
     private static final Logger logger = LogManager.getLogger(MysqlEventService.class);
 
     @Autowired

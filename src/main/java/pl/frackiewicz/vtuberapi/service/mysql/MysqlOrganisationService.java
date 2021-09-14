@@ -17,8 +17,8 @@ import java.util.UUID;
 
 @Component
 public class MysqlOrganisationService implements OrganisationService {
-    private OrganisationRepository organisationRepository;
-    private Validator validator;
+    private final OrganisationRepository organisationRepository;
+    private final Validator validator;
     private static final Logger logger = LogManager.getLogger(MysqlOrganisationService.class);
 
     @Autowired

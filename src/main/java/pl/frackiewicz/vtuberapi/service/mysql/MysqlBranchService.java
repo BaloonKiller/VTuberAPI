@@ -15,8 +15,8 @@ import java.util.*;
 
 @Component
 public class MysqlBranchService implements BranchService {
-    private Validator validator;
-    private BranchRepository branchRepository;
+    private final Validator validator;
+    private final BranchRepository branchRepository;
     private static final Logger logger = LogManager.getLogger(MysqlBranchService.class);
 
     @Autowired
