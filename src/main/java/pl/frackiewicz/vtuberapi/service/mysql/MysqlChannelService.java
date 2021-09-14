@@ -39,6 +39,11 @@ public class MysqlChannelService implements ChannelService {
 
     @Override
     public void save(Channel channel) {
+        try {
+            get(channel.getId());
+        } catch (NoSuchElementException noSuchElementException) {
+            channel.setId(UUID.randomUUID());
+        }
         Set<ConstraintViolation<Channel>> violations = validator.validate(channel);
         if (!violations.isEmpty()) {
             for (ConstraintViolation<Channel> constraintViolation : violations) {

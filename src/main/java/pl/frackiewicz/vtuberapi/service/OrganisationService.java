@@ -13,5 +13,6 @@ public interface OrganisationService {
 
     void save(Organisation organisation);
 
+
     void delete(Organisation organisation) throws NoSuchElementException;
 }

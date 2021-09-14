@@ -39,6 +39,11 @@ public class MysqlVideoService implements VideoService {
 
     @Override
     public void save(Video video) {
+        try {
+            get(video.getId());
+        } catch (NoSuchElementException noSuchElementException) {
+            video.setId(UUID.randomUUID());
+        }
         Set<ConstraintViolation<Video>> violations = validator.validate(video);
         if (!violations.isEmpty()) {
             for (ConstraintViolation<Video> constraintViolation : violations) {

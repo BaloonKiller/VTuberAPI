@@ -37,6 +37,11 @@ public class MysqlBranchService implements BranchService {
 
     @Override
     public void save(Branch branch) {
+        try {
+            get(branch.getId());
+        } catch (NoSuchElementException noSuchElementException) {
+            branch.setId(UUID.randomUUID());
+        }
         Set<ConstraintViolation<Branch>> violations = validator.validate(branch);
         if (!violations.isEmpty()) {
             for (ConstraintViolation<Branch> constraintViolation : violations) {

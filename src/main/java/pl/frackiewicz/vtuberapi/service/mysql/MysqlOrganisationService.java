@@ -39,6 +39,11 @@ public class MysqlOrganisationService implements OrganisationService {
 
     @Override
     public void save(Organisation organisation) {
+        try {
+            get(organisation.getId());
+        } catch (NoSuchElementException noSuchElementException) {
+            organisation.setId(UUID.randomUUID());
+        }
         Set<ConstraintViolation<Organisation>> violations = validator.validate(organisation);
         if (!violations.isEmpty()) {
             for (ConstraintViolation<Organisation> constraintViolation : violations) {

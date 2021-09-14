@@ -39,6 +39,11 @@ public class MysqlEventService implements EventService {
 
     @Override
     public void save(Event event) {
+        try {
+            get(event.getId());
+        } catch (NoSuchElementException noSuchElementException) {
+            event.setId(UUID.randomUUID());
+        }
         Set<ConstraintViolation<Event>> violations = validator.validate(event);
         if (!violations.isEmpty()) {
             for (ConstraintViolation<Event> constraintViolation : violations) {
