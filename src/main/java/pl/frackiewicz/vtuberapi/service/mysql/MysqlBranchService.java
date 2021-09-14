@@ -54,6 +54,7 @@ public class MysqlBranchService implements BranchService {
 
     @Override
     public void delete(Branch branch) throws NoSuchElementException{
+        get(branch.getId());
         branchRepository.delete(branch);
     }
 }

@@ -56,6 +56,7 @@ public class MysqlVideoService implements VideoService {
 
     @Override
     public void delete(Video video) throws NoSuchElementException {
+        get(video.getId());
         videoRepository.delete(video);
     }
 }

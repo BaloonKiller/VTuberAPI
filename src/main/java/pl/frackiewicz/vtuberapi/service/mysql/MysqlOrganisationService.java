@@ -56,6 +56,7 @@ public class MysqlOrganisationService implements OrganisationService {
 
     @Override
     public void delete(Organisation organisation) throws NoSuchElementException {
+        get(organisation.getId());
         organisationRepository.delete(organisation);
     }
 }
