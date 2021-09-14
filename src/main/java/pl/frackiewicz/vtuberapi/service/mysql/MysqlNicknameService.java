@@ -49,7 +49,7 @@ public class MysqlNicknameService implements NicknameService {
     }
 
     @Override
-    public void delete(Nickname nickname) {
+    public void delete(Nickname nickname) throws NoSuchElementException {
         nicknameRepository.delete(nickname);
     }
 }

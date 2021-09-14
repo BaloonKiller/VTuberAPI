@@ -50,7 +50,7 @@ public class MysqlVTuberService implements VTuberService {
     }
 
     @Override
-    public void delete(VTuber vTuber) {
+    public void delete(VTuber vTuber) throws NoSuchElementException {
         vTuberRepository.delete(vTuber);
     }
 }

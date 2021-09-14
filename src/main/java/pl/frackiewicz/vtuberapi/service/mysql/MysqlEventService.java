@@ -50,7 +50,7 @@ public class MysqlEventService implements EventService {
     }
 
     @Override
-    public void delete(Event event) {
+    public void delete(Event event) throws NoSuchElementException {
         eventRepository.delete(event);
     }
 }

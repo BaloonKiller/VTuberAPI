@@ -50,7 +50,7 @@ public class MysqlGenerationService implements GenerationService {
     }
 
     @Override
-    public void delete(Generation generation) {
+    public void delete(Generation generation) throws NoSuchElementException {
         generationRepository.delete(generation);
     }
 }

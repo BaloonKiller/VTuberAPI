@@ -50,7 +50,7 @@ public class MysqlSocialMediaHashtagService implements SocialMediaHashtagService
     }
 
     @Override
-    public void delete(SocialMediaHashtag socialMediaHashtag) {
+    public void delete(SocialMediaHashtag socialMediaHashtag) throws NoSuchElementException{
         socialMediaHashtagRepository.delete(socialMediaHashtag);
     }
 }

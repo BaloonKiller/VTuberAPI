@@ -50,7 +50,7 @@ public class MysqlChannelService implements ChannelService {
     }
 
     @Override
-    public void delete(Channel channel) {
+    public void delete(Channel channel) throws NoSuchElementException {
         channelRepository.delete(channel);
     }
 }
