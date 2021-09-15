@@ -34,21 +34,16 @@ public class OrganisationController {
         try {
             return organisationService.get(id);
         } catch (NoSuchElementException noSuchElementException) {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "entity not found"
-            );
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "entity not found");
         }
     }
 
     @DeleteMapping("/{id}")
-    public void removeOrganisation(@PathVariable String id) {
+    public void removeOrganisation(@PathVariable UUID id) {
         try {
-            Organisation organisationToDelete = organisationService.get(UUID.fromString(id));
-            organisationService.delete(organisationToDelete);
+            organisationService.delete(organisationService.get(id));
         } catch (NoSuchElementException noSuchElementException) {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "entity not found"
-            );
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "entity not found");
         }
     }
 
