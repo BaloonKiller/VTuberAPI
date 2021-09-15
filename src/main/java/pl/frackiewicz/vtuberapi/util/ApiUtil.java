@@ -1,7 +1,6 @@
 package pl.frackiewicz.vtuberapi.util;
 
 public abstract class ApiUtil {
-
     public static String getApiKey() {
         String apiKey;
         try {
@@ -10,6 +9,7 @@ public abstract class ApiUtil {
             e.printStackTrace();
             apiKey = "unknown";
         }
+
         return apiKey;
     }
 }
