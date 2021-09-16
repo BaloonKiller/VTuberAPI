@@ -26,14 +26,14 @@ public class Branch {
     @Column(columnDefinition = "BINARY(16)")
     private UUID id;
 
-    @NotNull
     @NotBlank
     @Size(min = 2, max = 64)
+    @Column(nullable = false)
     private String name;
 
     @ManyToOne
-    @NotNull
     @JsonSerialize(using = OrganisationSerializer.class)
+    @NotNull
     private Organisation organisation;
 
     @OneToMany(mappedBy = "branch")

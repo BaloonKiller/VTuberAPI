@@ -30,10 +30,12 @@ public class VTuber {
     @Column(columnDefinition = "BINARY(16)")
     private UUID id;
 
+    @Column(nullable = false)
     @NotBlank
     @Size(max = 22)
     private String firstName;
 
+    @Column(nullable = false)
     @NotBlank
     @Size(max = 22)
     private String lastName;
@@ -100,5 +102,5 @@ public class VTuber {
     @JsonIgnore
     private Set<SocialMediaHashtag> socialMediaHashtags;
 
-    private boolean active;
+    private boolean active = true;
 }

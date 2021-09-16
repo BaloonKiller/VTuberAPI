@@ -33,6 +33,7 @@ public class Generation {
 
     @Size(min = 2, max = 64)
     @NotBlank
+    @Column(nullable = false)
     private String name;
 
     @ManyToOne

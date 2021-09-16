@@ -22,7 +22,7 @@ public class Nickname {
     @Id
     @Size(min = 3, max = 64)
     @NotBlank
-    @NotNull
+    @Column(nullable = false)
     private String nickname;
 
     @ManyToOne

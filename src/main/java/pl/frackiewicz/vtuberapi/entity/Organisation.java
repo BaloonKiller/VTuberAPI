@@ -8,6 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import java.time.LocalDate;
@@ -32,7 +33,8 @@ public class Organisation {
     @Column(columnDefinition = "BINARY(16)")
     private UUID id;
 
-    @NotNull
+    @Column(nullable = false)
+    @NotBlank
     private String name;
 
     @PastOrPresent

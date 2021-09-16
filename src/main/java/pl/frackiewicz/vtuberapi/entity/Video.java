@@ -31,6 +31,7 @@ public class Video {
     private UUID id;
 
     @NotNull
+    @Column(nullable = false)
     private String youtubeId;
 
     @ManyToOne

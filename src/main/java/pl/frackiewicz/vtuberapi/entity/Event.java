@@ -28,7 +28,7 @@ public class Event {
     @Column(columnDefinition = "BINARY(16)")
     private UUID id;
 
-    @NotNull
+    @Column(nullable = false)
     @Size(max = 255)
     private String name;
 
@@ -40,7 +40,7 @@ public class Event {
     private LocalDateTime eventDateTime;
 
     @Size(min = 3, max = 64)
-    @NotNull
+    @Column(nullable = false)
     private String type;
 
     @Size(max = 5000)

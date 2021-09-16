@@ -2,7 +2,6 @@ package pl.frackiewicz.vtuberapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +11,7 @@ import pl.frackiewicz.vtuberapi.util.VTuberSerializer;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 import java.math.BigInteger;
@@ -32,8 +32,8 @@ public class Channel {
     @Column(columnDefinition = "BINARY(16)")
     private UUID id;
 
-    @NotNull
     @NotBlank
+    @Column(nullable = false)
     private String youtubeId;
 
     @OneToOne
