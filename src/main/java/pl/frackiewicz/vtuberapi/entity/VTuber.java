@@ -58,14 +58,17 @@ public class VTuber {
     private Set<Nickname> nicknames;
 
     @ManyToOne
+    @NotNull
     @JsonSerialize(using = OrganisationSerializer.class)
     private Organisation organisation;
 
     @ManyToOne
+    @NotNull
     @JsonSerialize(using = BranchSerializer.class)
     private Branch branch;
 
     @ManyToOne
+    @NotNull
     @JsonSerialize(using = GenerationSerializer.class)
     private Generation generation;
 

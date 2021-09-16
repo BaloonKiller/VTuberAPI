@@ -12,6 +12,7 @@ import pl.frackiewicz.vtuberapi.util.VTuberSerializer;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.*;
 
@@ -35,10 +36,12 @@ public class Generation {
     private String name;
 
     @ManyToOne
+    @NotNull
     @JsonSerialize(using = OrganisationSerializer.class)
     private Organisation organisation;
 
     @ManyToOne
+    @NotNull
     @JsonSerialize(using = BranchSerializer.class)
     private Branch branch;
 

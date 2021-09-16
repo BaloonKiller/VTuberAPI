@@ -9,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.*;
 import pl.frackiewicz.vtuberapi.util.*;
@@ -25,12 +26,14 @@ public class Branch {
     @Column(columnDefinition = "BINARY(16)")
     private UUID id;
 
+    @NotNull
     @NotBlank
     @Size(min = 2, max = 64)
     private String name;
 
     @ManyToOne
-    @JsonIgnore
+    @NotNull
+    @JsonSerialize(using = OrganisationSerializer.class)
     private Organisation organisation;
 
     @OneToMany(mappedBy = "branch")
