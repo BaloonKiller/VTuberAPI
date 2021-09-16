@@ -39,11 +39,6 @@ public class MysqlGenerationService implements GenerationService {
 
     @Override
     public void save(Generation generation) {
-        try {
-            get(generation.getId());
-        } catch (NoSuchElementException noSuchElementException) {
-            generation.setId(UUID.randomUUID());
-        }
         Set<ConstraintViolation<Generation>> violations = validator.validate(generation);
         if (!violations.isEmpty()) {
             for (ConstraintViolation<Generation> constraintViolation : violations) {

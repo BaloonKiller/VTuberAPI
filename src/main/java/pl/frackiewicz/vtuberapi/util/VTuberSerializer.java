@@ -12,9 +12,9 @@ public class VTuberSerializer extends JsonSerializer<VTuber> {
     @Override
     public void serialize(VTuber vTuber, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException, JsonProcessingException {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeStringField("id", vTuber.getId().toString());
-        jsonGenerator.writeStringField("firstname", vTuber.getFirstName());
-        jsonGenerator.writeStringField("lastname", vTuber.getLastName());
+        jsonGenerator.writeObjectField("id", vTuber.getId());
+        jsonGenerator.writeObjectField("lastName", vTuber.getLastName());
+        jsonGenerator.writeObjectField("firstName", vTuber.getFirstName());
         jsonGenerator.writeEndObject();
     }
 }

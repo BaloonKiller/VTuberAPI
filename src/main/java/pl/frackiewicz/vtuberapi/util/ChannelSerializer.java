@@ -13,12 +13,9 @@ public class ChannelSerializer extends JsonSerializer<Channel> {
     public void serialize(Channel channel, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException, JsonProcessingException {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStringField("id", channel.getId().toString());
-        jsonGenerator.writeStartArray("vtuber");
-        jsonGenerator.writeStringField("id", channel.getVTuber().getId().toString());
-        jsonGenerator.writeStringField("firstname", channel.getVTuber().getFirstName());
-        jsonGenerator.writeStringField("lastname", channel.getVTuber().getLastName());
-        jsonGenerator.writeEndArray();
-        jsonGenerator.writeStringField("channelurl", channel.getChannelUrl());
+        jsonGenerator.writeStringField("youtubeId", channel.getYoutubeId());
+        jsonGenerator.writeStringField("channelName", channel.getChannelName());
+        jsonGenerator.writeStringField("channelUrl", channel.getChannelUrl());
         jsonGenerator.writeEndObject();
 
     }

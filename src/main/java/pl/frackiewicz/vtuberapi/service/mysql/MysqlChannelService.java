@@ -7,9 +7,11 @@ import org.springframework.stereotype.Component;
 import pl.frackiewicz.vtuberapi.entity.Channel;
 import pl.frackiewicz.vtuberapi.repository.ChannelRepository;
 import pl.frackiewicz.vtuberapi.service.ChannelService;
+import pl.frackiewicz.vtuberapi.service.YouTubeChannelDataService;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
+import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -39,17 +41,18 @@ public class MysqlChannelService implements ChannelService {
 
     @Override
     public void save(Channel channel) {
-        try {
-            get(channel.getId());
-        } catch (NoSuchElementException noSuchElementException) {
-            channel.setId(UUID.randomUUID());
-        }
         Set<ConstraintViolation<Channel>> violations = validator.validate(channel);
         if (!violations.isEmpty()) {
             for (ConstraintViolation<Channel> constraintViolation : violations) {
                 logger.debug(constraintViolation.getPropertyPath() + " "
                         + constraintViolation.getMessage()); }
         } else {
+            try {
+                String url = YouTubeChannelDataService.getApiUrl(channel.getYoutubeId());
+                channel.consumeChannelData(YouTubeChannelDataService.getYoutubeChannelPojo(url));
+            } catch (IOException ioException) {
+                logger.error("Cannot read from YouTubeData");
+            }
             channelRepository.save(channel);
         }
     }

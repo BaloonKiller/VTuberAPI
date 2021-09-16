@@ -1,10 +1,13 @@
 package pl.frackiewicz.vtuberapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import pl.frackiewicz.vtuberapi.pojo.YouTubeChannel;
 import pl.frackiewicz.vtuberapi.util.VTuberSerializer;
 
 import javax.persistence.*;
@@ -21,7 +24,7 @@ import java.util.UUID;
 @Table(
         name="channels",
         uniqueConstraints =
-        @UniqueConstraint(columnNames = "channelUrl"))
+        @UniqueConstraint(columnNames = "youtubeid"))
 public class Channel {
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -29,12 +32,19 @@ public class Channel {
     @Column(columnDefinition = "BINARY(16)")
     private UUID id;
 
+    @NotNull
+    @NotBlank
+    private String youtubeId;
+
     @OneToOne
-    @JsonSerialize(using = VTuberSerializer.class)
+    @NotNull
     private VTuber vTuber;
 
-    @NotBlank
+    @Size(max = 255)
+    private String channelName;
+
     @Size(min = 11, max = 255)
+    @Column(unique = true)
     private String channelUrl;
 
     @PositiveOrZero
@@ -46,9 +56,11 @@ public class Channel {
     @PositiveOrZero
     private BigInteger viewsSum;
 
-    @PositiveOrZero
-    private BigInteger likesSum;
-
-    @PositiveOrZero
-    private BigInteger dislikesSum;
+    public void consumeChannelData(YouTubeChannel data) {
+        this.setChannelName(data.getSnippet().getTitle());
+        this.setChannelUrl("https://www.youtube.com/channel/" + data.getId());
+        this.setSubscriptions(BigInteger.valueOf(data.getStatistics().getSubscriberCount()));
+        this.setVideoCount(BigInteger.valueOf(data.getStatistics().getVideoCount()));
+        this.setViewsSum(BigInteger.valueOf(data.getStatistics().getViewCount()));
+    }
 }

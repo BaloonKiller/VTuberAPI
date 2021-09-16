@@ -5,10 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class ContentDetails {
-    private String duration;
+@AllArgsConstructor
+public class RelatedPlaylists {
+    private String uploads;
     private String likes;
-    private RelatedPlaylists relatedPlaylists;
 }

@@ -1,5 +1,6 @@
 package pl.frackiewicz.vtuberapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -53,8 +54,8 @@ public class VTuber {
     private String description;
 
     @ManyToMany
-    @JsonSerialize(using = NicknameSerializer.class)
-    private Set<Nickname> nicknames = new HashSet<>();
+    @JsonIgnore
+    private Set<Nickname> nicknames;
 
     @ManyToOne
     @JsonSerialize(using = OrganisationSerializer.class)
@@ -73,16 +74,16 @@ public class VTuber {
     private Channel channel;
 
     @ManyToMany
-    @JsonSerialize(using = EventSerializer.class)
+    @JsonIgnore
     private Set<Event> events = new HashSet<>();
 
     @OneToMany(mappedBy = "author")
-    @JsonSerialize(using = VideoSerializer.class)
-    private Set<Video> createdVideos = new HashSet<>();
+    @JsonIgnore
+    private Set<Video> createdVideos;
 
     @ManyToMany
-    @JsonSerialize(using = VideoSerializer.class)
-    private Set<Video> memberOfVideos = new HashSet<>();
+    @JsonIgnore
+    private Set<Video> memberOfVideos;
 
     @Column(unique = true)
     @Size(max = 255)
@@ -93,8 +94,8 @@ public class VTuber {
     private LocalDate debutDate;
 
     @OneToMany(mappedBy = "userOfHashtag")
-    @JsonSerialize(using = SocialMediaHashtagSerializer.class)
-    private Set<SocialMediaHashtag> socialMediaHashtags = new HashSet<>();
+    @JsonIgnore
+    private Set<SocialMediaHashtag> socialMediaHashtags;
 
     private boolean active;
 }

@@ -1,5 +1,6 @@
 package pl.frackiewicz.vtuberapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,8 +26,11 @@ public class Event {
     @Column(columnDefinition = "BINARY(16)")
     private UUID id;
 
+    @Size(max = 255)
+    private String name;
+
     @ManyToMany(mappedBy = "events")
-    @JsonSerialize(using = VTuberSerializer.class)
+    @JsonIgnore
     private Set<VTuber> members = new HashSet<>();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)

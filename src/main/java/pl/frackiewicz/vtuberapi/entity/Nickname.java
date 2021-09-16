@@ -6,10 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.frackiewicz.vtuberapi.util.VTuberSerializer;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
@@ -26,7 +23,7 @@ public class Nickname {
     @NotBlank
     private String nickname;
 
-    @ManyToMany(mappedBy = "nicknames")
+    @ManyToOne
     @JsonSerialize(using = VTuberSerializer.class)
-    private Set<VTuber> usersOfNickname = new HashSet<>();
+    private VTuber userOfNickname;
 }

@@ -1,5 +1,6 @@
 package pl.frackiewicz.vtuberapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -42,6 +43,6 @@ public class Generation {
     private Branch branch;
 
     @OneToMany(mappedBy = "generation")
-    @JsonSerialize(using = VTuberSerializer.class)
+    @JsonIgnore
     private Set<VTuber> vTubers = new HashSet<>();
 }

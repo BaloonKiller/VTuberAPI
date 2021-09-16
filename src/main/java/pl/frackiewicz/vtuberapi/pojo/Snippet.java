@@ -17,4 +17,5 @@ public class Snippet {
     private String description;
     private Set<String> tags;
     private String customURL;
+    private String country;
 }

@@ -39,11 +39,6 @@ public class MysqlVTuberService implements VTuberService {
 
     @Override
     public void save(VTuber vTuber) {
-        try {
-            get(vTuber.getId());
-        } catch (NoSuchElementException noSuchElementException) {
-            vTuber.setId(UUID.randomUUID());
-        }
         Set<ConstraintViolation<VTuber>> violations = validator.validate(vTuber);
         if (!violations.isEmpty()) {
             for (ConstraintViolation<VTuber> constraintViolation : violations) {

@@ -7,9 +7,11 @@ import org.springframework.stereotype.Component;
 import pl.frackiewicz.vtuberapi.entity.Video;
 import pl.frackiewicz.vtuberapi.repository.VideoRepository;
 import pl.frackiewicz.vtuberapi.service.VideoService;
+import pl.frackiewicz.vtuberapi.service.YouTubeVideoDataService;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
+import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -39,17 +41,18 @@ public class MysqlVideoService implements VideoService {
 
     @Override
     public void save(Video video) {
-        try {
-            get(video.getId());
-        } catch (NoSuchElementException noSuchElementException) {
-            video.setId(UUID.randomUUID());
-        }
         Set<ConstraintViolation<Video>> violations = validator.validate(video);
         if (!violations.isEmpty()) {
             for (ConstraintViolation<Video> constraintViolation : violations) {
                 logger.debug(constraintViolation.getPropertyPath() + " "
                         + constraintViolation.getMessage()); }
         } else {
+            try {
+                String url = YouTubeVideoDataService.getApiUrl(video.getYoutubeId());
+                video.consumeVideoData(YouTubeVideoDataService.getYoutubeVideoPojo(url));
+            } catch (IOException ioException) {
+                logger.error("Cannot read from YouTubeData");
+            }
             videoRepository.save(video);
         }
     }

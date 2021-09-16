@@ -1,5 +1,6 @@
 package pl.frackiewicz.vtuberapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,14 +30,14 @@ public class Branch {
     private String name;
 
     @ManyToOne
-    @JsonSerialize(using = OrganisationSerializer.class)
+    @JsonIgnore
     private Organisation organisation;
 
     @OneToMany(mappedBy = "branch")
-    @JsonSerialize(using = GenerationSerializer.class)
+    @JsonIgnore
     private Set<Generation> generations = new HashSet<>();
     
     @OneToMany(mappedBy = "branch")
-    @JsonSerialize(using = VTuberSerializer.class)
+    @JsonIgnore
     private Set<VTuber> vTubers = new HashSet<>();
 }

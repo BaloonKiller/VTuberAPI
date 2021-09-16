@@ -13,5 +13,4 @@ public class YouTubeChannel {
     private Snippet snippet;
     private Statistics statistics;
     private String defaultLanguage;
-    private String country;
 }
