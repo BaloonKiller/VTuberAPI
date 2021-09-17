@@ -9,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 import pl.frackiewicz.vtuberapi.util.BranchSerializer;
 import pl.frackiewicz.vtuberapi.util.OrganisationSerializer;
 import pl.frackiewicz.vtuberapi.util.VTuberSerializer;
+import pl.frackiewicz.vtuberapi.util.VTuberSetSerializer;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -47,6 +48,6 @@ public class Generation {
     private Branch branch;
 
     @OneToMany(mappedBy = "generation")
-    @JsonIgnore
+    @JsonSerialize(using = VTuberSetSerializer.class)
     private Set<VTuber> vTubers = new HashSet<>();
 }

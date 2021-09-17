@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.frackiewicz.vtuberapi.util.VTuberSerializer;
+import pl.frackiewicz.vtuberapi.util.VTuberSetSerializer;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -33,7 +34,7 @@ public class Event {
     private String name;
 
     @ManyToMany(mappedBy = "events")
-    @JsonIgnore
+    @JsonSerialize(using = VTuberSetSerializer.class)
     private Set<VTuber> members = new HashSet<>();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
