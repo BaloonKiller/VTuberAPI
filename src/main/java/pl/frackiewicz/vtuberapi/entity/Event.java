@@ -1,18 +1,13 @@
 package pl.frackiewicz.vtuberapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
-import pl.frackiewicz.vtuberapi.util.VTuberSerializer;
-import pl.frackiewicz.vtuberapi.util.VTuberSetSerializer;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -34,7 +29,7 @@ public class Event {
     private String name;
 
     @ManyToMany(mappedBy = "events")
-    @JsonSerialize(using = VTuberSetSerializer.class)
+    @JsonIgnore
     private Set<VTuber> members = new HashSet<>();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)

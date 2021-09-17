@@ -12,7 +12,6 @@ public class EventListSerializer extends JsonSerializer<Set<Event>> {
     @Override
     public void serialize(Set<Event> events, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeStartArray("events");
         for(Event event : events) {
             jsonGenerator.writeStartObject();
             jsonGenerator.writeStringField("id", event.getId().toString());
@@ -20,7 +19,6 @@ public class EventListSerializer extends JsonSerializer<Set<Event>> {
             jsonGenerator.writeStringField("type", event.getType());
             jsonGenerator.writeEndObject();
         }
-        jsonGenerator.writeEndArray();
         jsonGenerator.writeEndObject();
     }
 }

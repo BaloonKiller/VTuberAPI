@@ -1,6 +1,5 @@
 package pl.frackiewicz.vtuberapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,6 +37,7 @@ public class Channel {
 
     @OneToOne
     @NotNull
+    @JsonSerialize(using = VTuberSerializer.class)
     private VTuber vTuber;
 
     @Size(max = 255)

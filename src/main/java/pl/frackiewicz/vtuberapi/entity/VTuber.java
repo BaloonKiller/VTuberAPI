@@ -56,7 +56,7 @@ public class VTuber {
     private String description;
 
     @ManyToMany
-    @JsonSerialize(using = NicknameSetSerializer.class)
+    @JsonIgnore
     private Set<Nickname> nicknames;
 
     @ManyToOne
@@ -79,15 +79,15 @@ public class VTuber {
     private Channel channel;
 
     @ManyToMany
-    @JsonSerialize(using = EventListSerializer.class)
+    @JsonIgnore
     private Set<Event> events = new HashSet<>();
 
     @OneToMany(mappedBy = "author")
-    @JsonSerialize(using = VideoSetSerializer.class)
+    @JsonIgnore
     private Set<Video> createdVideos;
 
     @ManyToMany
-    @JsonSerialize(using = VTuberSetSerializer.class)
+    @JsonIgnore
     private Set<Video> memberOfVideos;
 
     @Column(unique = true)
@@ -99,7 +99,7 @@ public class VTuber {
     private LocalDate debutDate;
 
     @OneToMany(mappedBy = "userOfHashtag")
-    @JsonSerialize(using = SocialMediaHashtagSetSerializer.class)
+    @JsonIgnore
     private Set<SocialMediaHashtag> socialMediaHashtags;
 
     private boolean active = true;

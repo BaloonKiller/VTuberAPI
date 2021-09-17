@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import pl.frackiewicz.vtuberapi.util.VTuberSerializer;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -27,7 +26,7 @@ public class SocialMediaHashtag {
     private String type;
 
     @ManyToOne
-    @JsonSerialize(using = VTuberSerializer.class)
     @NotNull
+    @JsonSerialize(using = VTuberSerializer.class)
     private VTuber userOfHashtag;
 }

@@ -1,19 +1,15 @@
 package pl.frackiewicz.vtuberapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-import pl.frackiewicz.vtuberapi.util.BranchSerializer;
-import pl.frackiewicz.vtuberapi.util.GenerationSetSerializer;
-import pl.frackiewicz.vtuberapi.util.VTuberSetSerializer;
+
 
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -45,14 +41,14 @@ public class Organisation {
     private LocalDate createdDate;
 
     @OneToMany(mappedBy = "organisation")
-    @JsonSerialize(using = BranchSerializer.class)
+    @JsonIgnore
     private Set<Branch> branches = new HashSet<>();
 
     @OneToMany(mappedBy = "organisation")
-    @JsonSerialize(using = GenerationSetSerializer.class)
+    @JsonIgnore
     private Set<Generation> generations = new HashSet<>();
 
     @OneToMany(mappedBy = "organisation")
-    @JsonSerialize(using = VTuberSetSerializer.class)
+    @JsonIgnore
     private Set<VTuber> vTubers = new HashSet<>();
 }

@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import pl.frackiewicz.vtuberapi.pojo.YouTubeVideo;
 import pl.frackiewicz.vtuberapi.util.VTuberSerializer;
-import pl.frackiewicz.vtuberapi.util.VTuberSetSerializer;
 
 import javax.persistence.*;
 import javax.validation.constraints.PastOrPresent;
@@ -40,7 +39,7 @@ public class Video {
     private VTuber author;
 
     @ManyToMany(mappedBy = "memberOfVideos")
-    @JsonSerialize(using = VTuberSetSerializer.class)
+    @JsonIgnore
     private Set<VTuber> members = new HashSet<>();
 
     @Size(max = 255)
