@@ -55,7 +55,7 @@ public class VTuber {
     @Size(max = 5000)
     private String description;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "userOfNickname")
     @JsonIgnore
     private Set<Nickname> nicknames;
 

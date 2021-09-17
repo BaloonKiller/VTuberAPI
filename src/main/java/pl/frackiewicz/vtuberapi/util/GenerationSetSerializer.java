@@ -3,6 +3,7 @@ package pl.frackiewicz.vtuberapi.util;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import org.springframework.boot.jackson.JsonComponent;
 import pl.frackiewicz.vtuberapi.entity.Generation;
 
 import java.io.IOException;
